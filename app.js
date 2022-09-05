@@ -1,17 +1,20 @@
 import express from 'express';
+import path from 'path';
+//__dirname değişkeninin kullanılması için son sürümlerde yapılan düzenleme
+/*import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(
+    import.meta.url);
+const __dirname = path.dirname(__filename); */
+
 const app = express();
-const port = 3000;
 
+app.use(express.static('public'));
 app.get('/', (req, res) => {
-    res.header('Cache-Control', 'no-cache, no-store, must-revalidate');
-    const photo = {
-        id: 1,
-        name: 'photo name',
-        description: 'photo description',
-    };
-    res.send(photo);
+    //res.sendFile(path.resolve(__dirname, 'temp/index.html'));
+    /*https://nodejs.org/api/esm.html#esm_no_filename_or_dirname buradaki açıklamaya göre __dirname kaldırılmış */
+    res.sendFile(path.resolve('temp/index.html'));
 });
-
+const port = 3000;
 app.listen(port, () => {
     console.log(`Sunucu ${port} portunda çalıştırıldı`);
 });
