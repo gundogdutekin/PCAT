@@ -1,26 +1,32 @@
 {
-  "name": "pcat",
-  "version": "1.0.0",
-  "description": "PCAT PHOTO APP",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gundogdutekin/PCAT.git"
-  },
-  "keywords": [
-    "PHOTO",
-    "APP"
-  ],
-  "author": "Tekin Gündoğdu",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/gundogdutekin/PCAT/issues"
-  },
-  "homepage": "https://github.com/gundogdutekin/PCAT#readme",
-  "devDependencies": {
-    "prettier": "2.7.1"
-  }
+    "name": "pcat",
+    "version": "1.0.0",
+    "description": "PCAT PHOTO APP",
+    "main": "app.js",
+    "type": "module",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "nodemon app.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gundogdutekin/PCAT.git"
+    },
+    "keywords": [
+        "PHOTO",
+        "APP"
+    ],
+    "author": "Tekin Gündoğdu",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/gundogdutekin/PCAT/issues"
+    },
+    "homepage": "https://github.com/gundogdutekin/PCAT#readme",
+    "devDependencies": {
+        "nodemon": "^2.0.19",
+        "prettier": "2.7.1"
+    },
+    "dependencies": {
+        "express": "^4.18.1"
+    }
 }
