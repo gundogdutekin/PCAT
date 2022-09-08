@@ -7,7 +7,8 @@ const app = express();
 mongoose.connect('mongodb://localhost/pcat-test-db');
 //Template Engine ejs set
 app.set('view engine', 'ejs');
-//Middlewares
+//MİDDLEWARS
+//Static Files Middleware
 app.use(express.static('public'));
 //Post Middlewars
 app.use(express.urlencoded({ extended: true }));
