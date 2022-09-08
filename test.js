@@ -13,7 +13,7 @@ const PhotoSchema = new Schema({
 //CREAT MODEL
 const Photo = mongoose.model('photo', PhotoSchema);
 //LİST ALL PHOTO
-/* Photo.find()
+Photo.find()
     .exec()
     .then((data) => {
         data.forEach((item) => {
@@ -23,7 +23,8 @@ const Photo = mongoose.model('photo', PhotoSchema);
     })
     .catch((err) => {
         console.log(err);
-    }); */
+    });
+
 //LİST ONE PHOTO
 /* const Id = '6319c4f5248f2a19054f446f';
 Photo.find({ _id: Id })
