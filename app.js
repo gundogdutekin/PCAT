@@ -34,18 +34,46 @@ app.get('/photo/:id', async(req, res) => {
     res.render('photo', { photo });
 });
 app.post('/photos', (req, res) => {
+    //console.log(req.body);
     const uploadDir = './public/uploads';
 
     if (!fs.existsSync(uploadDir)) {
         fs.mkdirSync(uploadDir);
     }
+    let reqbody = req.body;
+    let photoTitle = reqbody.title;
     let uploadImage = req.files.image;
+    let imageMimetype = req.files.image.mimetype;
+    let ex = imageMimetype.split('/')[1];
+    const slugify = () => {
+        let trMap = {
+            çÇ: 'c',
+            ğĞ: 'g',
+            şŞ: 's',
+            üÜ: 'u',
+            ıİ: 'i',
+            öÖ: 'o',
+        };
+        for (let key in trMap) {
+            photoTitle = photoTitle.replace(
+                new RegExp('[' + key + ']', 'g'),
+                trMap[key]
+            );
+        }
+        return photoTitle
+            .replace(/[^-a-zA-Z0-9\s]+/gi, '') // remove non-alphanumeric chars
+            .replace(/\s/gi, '-') // convert spaces to dashes
+            .replace(/[-]+/gi, '-') // trim repeated dashes
+            .toLowerCase();
+    };
     let uploadPath = `./public/uploads/${uploadImage.name}`;
+    let newReNameUploadPath = `./public/uploads/${slugify()}.${ex}`;
 
     uploadImage.mv(uploadPath, async() => {
+        fs.renameSync(uploadPath, newReNameUploadPath);
         await Photo.create({
             ...req.body,
-            image: `/uploads/${uploadImage.name}`,
+            image: `/uploads/${slugify()}.${ex}`,
         });
     });
     res.redirect('/');
