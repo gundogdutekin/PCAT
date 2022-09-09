@@ -20,7 +20,7 @@ app.use(fileUpload());
 
 //ROUTES
 app.get('/', async(req, res) => {
-    const Photos = await Photo.find({});
+    const Photos = await Photo.find({}).sort('-dateCreated');
     res.render('index', { photos: Photos });
 });
 app.get('/about', (req, res) => {
