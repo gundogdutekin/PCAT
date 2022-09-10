@@ -3,7 +3,7 @@ import moment from 'moment-timezone';
 const { Schema } = mongoose;
 
 const PhotoSchema = new Schema({
-    title: String,
+    title: { type: String, unique: true },
     description: String,
     image: String,
     dateCreated: {
