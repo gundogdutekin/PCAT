@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import fileUpload from 'express-fileupload';
 import methodOverride from 'method-override';
+import ejs from 'ejs';
 
 import {
     getAllPhotos,
