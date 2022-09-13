@@ -2,8 +2,8 @@ import express from 'express';
 import mongoose from 'mongoose';
 import fileUpload from 'express-fileupload';
 import methodOverride from 'method-override';
-import ejs from 'ejs';
-
+//import ejs from 'ejs'
+const ejs = require('ejs');
 import {
     getAllPhotos,
     getPhoto,
