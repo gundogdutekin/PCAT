@@ -20,8 +20,11 @@ const app = express();
 
 //CONNECT DB
 mongoose
-    .connect(
+/*     .connect(
         'mongodb+srv://pirveli:CBCf2v3VhVsVaYOA@cluster0.u4dhazd.mongodb.net/photo-app-pirveli?retryWrites=true&w=majority'
+) */
+    .connect(
+        'mongodb+srv://pirveli:CBCf2v3VhVsVaYOA@cluster0.u4dhazd.mongodb.net/?retryWrites=true&w=majority'
     )
     .then(() => {
         console.log('DB CONNECTED');
