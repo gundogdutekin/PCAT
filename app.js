@@ -24,14 +24,9 @@ mongoose
         'mongodb+srv://pirveli:CBCf2v3VhVsVaYOA@cluster0.u4dhazd.mongodb.net/photo-app-pirveli?retryWrites=true&w=majority'
 ) */
     .connect(
-        'mongodb+srv://pirveli:CBCf2v3VhVsVaYOA@cluster0.u4dhazd.mongodb.net/?retryWrites=true&w=majority'
-    )
-    .then(() => {
-        console.log('DB CONNECTED');
-    })
-    .catch((err) => {
-        console.log(err);
-    });
+    'mongodb+srv://pirveli:CBCf2v3VhVsVaYOA@cluster0.u4dhazd.mongodb.net/?retryWrites=true&w=majority'
+);
+
 //Template Engine "EJS" Set
 app.set('view engine', 'ejs');
 //MİDDLEWARS
