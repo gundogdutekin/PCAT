@@ -52,7 +52,7 @@ app.post('/photoUpdate', photoUpdate);
 app.delete('/photo/:id', photoDelete);
 
 //PORT DEFİNED
-const port = process.env.PORT || 5000;
-app.listen(port, () => {
-    console.log(`Sunucu ${port} portunda çalıştırıldı`);
+const PORT = process.env.PORT || config.httpPort;
+app.listen(PORT, () => {
+    console.log(`Sunucu ${PORT} portunda çalıştırıldı`);
 });
