@@ -24,9 +24,14 @@ mongoose
         'mongodb+srv://pirveli:CBCf2v3VhVsVaYOA@cluster0.u4dhazd.mongodb.net/photo-app-pirveli?retryWrites=true&w=majority'
 ) */
     .connect(
-    'mongodb+srv://pirveli:CBCf2v3VhVsVaYOA@cluster0.u4dhazd.mongodb.net/?retryWrites=true&w=majority'
-);
-
+        'mongodb+srv://pirveli:CBCf2v3VhVsVaYOA@cluster0.u4dhazd.mongodb.net/?retryWrites=true&w=majority'
+    )
+    .then(() => {
+        console.log('DB CONNECTED');
+    })
+    .catch((err) => {
+        console.log(err);
+    });
 //Template Engine "EJS" Set
 app.set('view engine', 'ejs');
 //MİDDLEWARS
@@ -52,7 +57,7 @@ app.post('/photoUpdate', photoUpdate);
 app.delete('/photo/:id', photoDelete);
 
 //PORT DEFİNED
-const PORT = process.env.PORT || config.httpPort;
-app.listen(PORT, () => {
-    console.log(`Sunucu ${PORT} portunda çalıştırıldı`);
+const port = process.env.PORT || 5000;
+app.listen(port, () => {
+    console.log(`Sunucu ${port} portunda çalıştırıldı`);
 });
