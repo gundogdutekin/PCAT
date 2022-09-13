@@ -4,8 +4,30 @@ import path from 'path';
 import { Photo } from '../models/Photo.js';
 
 const getAllPhotos = async(req, res) => {
-    const Photos = await Photo.find({}).sort('-dateCreated');
-    res.render('index', { photos: Photos });
+    //pagination start
+    const page = req.query.page || 1;
+    const photosPerPage = 3;
+
+    const totalPhotos = await Photo.find().countDocuments();
+    const Photos = await Photo.find({})
+        .sort('-dateCreated')
+        .skip((page - 1) * photosPerPage)
+        .limit(photosPerPage);
+    let desc = 0;
+    if (page != 1) {
+        desc = page - 1;
+    }
+    let inc = 0;
+    if (page != Math.ceil(totalPhotos / photosPerPage)) {
+        inc = parseInt(page) + 1;
+    }
+    res.render('index', {
+        photos: Photos,
+        current: page,
+        pages: Math.ceil(totalPhotos / photosPerPage),
+        leftArrow: desc,
+        rightArrow: inc,
+    });
 };
 
 const getPhoto = async(req, res) => {
