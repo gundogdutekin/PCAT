@@ -19,7 +19,16 @@ import {
 const app = express();
 
 //CONNECT DB
-mongoose.connect('mongodb://localhost/pcat-test-db');
+mongoose
+    .connect(
+        'mongodb+srv://pirveli:1FaFcx169hVjghuQ@cluster0.u4dhazd.mongodb.net/photo-app-pirveli?retryWrites=true&w=majority'
+    )
+    .then(() => {
+        console.log('DB CONNECTED');
+    })
+    .catch((err) => {
+        console.log(err);
+    });
 //Template Engine "EJS" Set
 app.set('view engine', 'ejs');
 //MİDDLEWARS
@@ -45,7 +54,7 @@ app.post('/photoUpdate', photoUpdate);
 app.delete('/photo/:id', photoDelete);
 
 //PORT DEFİNED
-const port = 3000;
+const port = process.env.PORT || 5000;
 app.listen(port, () => {
     console.log(`Sunucu ${port} portunda çalıştırıldı`);
 });
